@@ -1,0 +1,163 @@
+
+
+  <!-- Bootstrap CAlls  -->
+  <!--
+	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js">
+	</script>
+  -->
+  
+  <!-- Other Table Calls -->
+  <!--
+  <script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.js"></script>
+  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  <link rel="stylesheet" type="text/css" href="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.css">
+  <script type="text/javascript" src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.js"></script>
+  -->
+
+
+
+<!-- show.html.erb
+<div>
+    
+    <%= @displayTicket %>
+    <% @displayTicket['tickets'].each do |tickets| %>
+        <p>Ticket Number: <%= tickets['id'] %> </p>
+        <p> Subject: <%= tickets['subject'] %> </p>
+        <p> This is a <%= tickets['status'] %> ticket
+        of type  <%= tickets['type'] %>
+        with a <%= tickets['priority'] %> priority </p>
+        <p> Submition date: <%= tickets['created_at'] %>, 
+        Last Updated: <%= tickets['updated_at'] %> </p>
+        <p> Description: <%= tickets['description'] %> </p>
+        
+        
+        <br>
+    <%end %>
+</div>
+-->
+
+<script>
+/*
+function continueSubmit() {
+  var isValid = myValidatorFunction();
+  document.getElementById('new_ticket').submit();
+}
+*/
+</script>
+
+<script>
+// Adding colors for each field depending on their status. Success or Failure.
+/*
+function myValidatorFunction() {
+	
+	// Variables for each text field.
+	var var_Full_Name = $("#fullname").val();
+	var var_Email = $("#email").val();
+	var var_Subject = $("#subject").val();
+	var var_Body = $("#body").val();
+	var allRequiredCompleted = 1;
+	// Trim all whitespace and check length of text field. If equal to 0, set error status for text field.
+    if(JQuery.trim(var_Full_Name).length == 0){
+      $("#fullname").removeClass('glyphicon-ok').addClass('glyphicon-remove');
+        allRequiredCompleted = 0;
+    }else{
+      $("#fullname").removeClass('glyphicon-remove').addClass('glyphicon-ok'); 
+    }
+    
+    if(JQuery.trim(var_Email).length == 0){
+    	$("#email").removeClass('glyphicon-ok').addClass('glyphicon-remove');
+    	allRequiredCompleted = 0;
+    }else{
+      $("#email").removeClass('glyphicon-remove').addClass('glyphicon-ok');
+    }
+    
+    if(JQuery.trim(var_Subject).length == 0){
+      $("#subject").removeClass('glyphicon-ok').addClass('glyphicon-remove');
+      allRequiredCompleted = 0;
+    }else{
+      $("#subject").removeClass('glyphicon-remove').addClass('glyphicon-ok');
+    }
+    
+    if(JQuery.trim(var_Body).length == 0){
+      $("#body").removeClass('glyphicon-ok').addClass('glyphicon-remove');
+      allRequiredCompleted = 0;
+    }else{
+      $("#body").removeClass('glyphicon-remove').addClass('glyphicon-ok');
+    }
+    
+    return  allRequiredCompleted;
+}
+*/
+</script>
+
+<!-- Begin Valdiation Scripts -->
+<script>
+/*
+$(document).ready(function () {
+	$("#new_ticket").validate({
+		debug: true,
+		rules: {
+		"ticket[full_name]": {required: true, email: true},
+}
+});
+});
+
+*/
+/*
+$(document).ready(function () {
+	
+$("new_ticket").validate({    
+    rules: {
+        "ticket[full_name]": {
+            minlength: 3,
+            maxlength: 15,
+            required: true
+        },
+    },
+    
+    highlight: function(element) {
+        var id_attr = "#" + $( element ).attr("id") + "1";
+        $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        $(id_attr).removeClass('glyphicon-ok').addClass('glyphicon-remove');         
+    },
+    unhighlight: function(element) {
+        var id_attr = "#" + $( element ).attr("id") + "1";
+        $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+        $(id_attr).removeClass('glyphicon-remove').addClass('glyphicon-ok');         
+    },
+    errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function(error, element) {
+            if(element.length) {
+                error.insertAfter(element);
+            } else {
+            error.insertAfter(element);
+            }
+        } 
+ });
+});
+*/
+</script>
+<!-- End Valdiation Scripts -->
+
+<script>
+/* Unused ATM 
+$(document).ready(function () {
+   $('[data-toggle=confirmation]').confirmation();
+});
+
+*/
+</script>
+
+<script>
+
+/* Perform validation check against all fields.
+$("#new_ticket").validate();
+*/
+</script>
+

@@ -1,0 +1,345 @@
+<!---
+<h1>Tickets#new</h1>
+<p>Find me in app/views/tickets/new.html.erb</p>
+--->
+
+
+<!-- RAILS VULNERABILTIES AND PREVENTIONS: NETSPARKER: https://www.netsparker.com/blog/web-security/ruby-on-rails-security-basics/   -->
+
+<h1>Submit A Ticket</h1>
+
+<div>
+	<ul class = "pager">
+	   <li class = "previous">
+	   		<a class="beehivelybtn" data-toggle="modal" data-target="#GoHomeModal">&larr; Home </a>
+	   	</li>
+	</ul>
+</div>
+
+			<!-- Submit Ticket Section Begin -->
+			<div id="SubmitTicket">
+				<p> Please Fill In The Information Below To Submit Your Ticket. </p>
+				<p class="help-block"> All fields highlighted are Required.</p>
+				
+				<form role="form" action="/tickets/create" id="new_ticket" data-toggle="validator" method="get">
+					
+					<div class="form-group has-feedback">
+    					<label for="fullname" class="control-label">Full Name</label>
+    					<input type="text" class="form-control" id="full_name" name="full_name" placeholder="Full Name" minlength="5" maxlength="30" onclick="helpfulModal();" required>
+    			   <span class="error" aria-live="polite"></span>
+    			<!--<span class="glyphicon form-control-feedback" id="full_name1"></span>-->
+  					</div>
+					
+				  <div class="form-group has-feedback">
+					<label class="control-label" for="email">Email address</label>
+					<input type="email" class="form-control" id="email" name="email" placeholder="Email" data-error="That email address is invalid." maxlength="30" required>
+					<span class="glyphicon form-control-feedback" id="email1"></span>
+				  </div>
+
+					  <div class="form-group has-feedback">
+					  <label class="control-label" for="subject">Subject</label>
+					  <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" minlength="2" maxlength="30" required>
+					  <span class="glyphicon form-control-feedback" id="subject1"></span>
+				  </div>
+				  
+				  <div class="form-group has-feedback">
+					<label class="control-label" for="body">Please Describe Your Issue</label>
+					<textarea class="form-control" id="body" name="body" rows="10"placeholder="Clear Detailed Description of Your Problem" minlength="5" maxlength="500" required></textarea>
+					<span class="glyphicon form-control-feedback" id="body1"></span>
+				  </div>
+				  
+				  <div class="form-group has-feedback">
+					<label class="control-label" for="attachments">Attachments (Drop File On Button To Upload! or Search Your Computer By Clicking The Button.)</label>
+					<input type="file" id="attachments" name="attachments">
+					
+					<hr>
+					
+					<p class="help-block"> Please Go To "View Your Tickets" To Manage Your Current Tickets. </p>
+					<p class="help-block"> A Beehively Technician Will Respond Shortly. Thank You For Using Beehively. </p>
+				  </div>
+				  
+				  <input type="submit" class="btn btn-default beehivelybtn" id="ticketSubmitBtn" data-toggle="confirmation" onclick="checkAttachment(this);return false" />
+				</form>	
+			</div>		
+				<!-- Submit Ticket Section End -->
+
+<div>
+	<ul class = "pager">
+	   <li class = "previous">
+	   		<a class="beehivelybtn" data-toggle="modal" id="bottomHomeButton" data-target="#GoHomeModal">&larr; Home </a>
+	   	</li>
+	</ul>
+</div>
+
+<br><br>
+
+<!-- Start of Modals -->
+
+<!-- Beginning of HelpfulTipModal -->
+<div id="HelpfulTipModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" align="center"><h1>FAQ<br><small>Helpful Tip!</small></h1></h4>
+      </div>
+      <div class="modal-body">
+      	<h5><b> It Contains </b></h5>
+        <ul>
+        	<li>Plenty of great suggestions for solving your problems!</li>
+        	<li>If you have not checked out our Frequently Asked Questions, Please take the time to do so before contacting us.</li> 
+       </ul>
+
+        <h5><b> Benefits of FAQ Sections </b></h5>
+        <p> Reading Frequently Asked Questions allows you learn about other features you may not have known existed!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No Thanks, I have a clear detailed description of my problem</button>
+        <%= link_to(pages_faq_path) do %>
+        <button type="button" class="btn btn-primary">Take Me To The Frequently Asked Questions Section</button>
+        <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End of HelpfulTipModal-->
+
+<!-- Beginning of GoHomeModal -->
+<div id="GoHomeModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" align="center"><h1 align="center"><font color="#ff3300">Warning!</font></h1></h4>
+      </div>
+      <div class="modal-body">
+		<p> <h3 class="ShadowFont"> Returning To Home Page Will Erase Any Information In Your Ticket! </h3></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"> Cancel </button>
+        <%= link_to(pages_welcome_path) do %>  
+        <button type="button" class="btn btn-primary">Continue?</button>
+        <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End of GoHomeModal -->
+
+<!-- Beginning of NoAttachmentModal (NOT CURRENTLY USED)-->
+<div id="NoAttachmentModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" align="center"><h1 align="center"><font color="#ff3300">Warning!</font></h1></h4>
+      </div>
+      <div class="modal-body" align="center">
+		<p align="center"> <h3 class="ShadowFont" id="NoAttachmentModalText"> File Will Be Submitted Without An Attachment! </h3></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="attachmentCancel" data-dismiss="modal"> Cancel </button>
+        <!-- Was in continueSubmitBtn onclick="continueSubmit() glitches on validation though -->
+        <button type="button" class="btn btn-primary" id="continueSubmitBtn" onclick="continueSubmit()">Continue?</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End of NoAttachmentModal -->
+
+<!-- End of Modals -->
+<script src=".../jquery.js"></script>
+<script src=".../bootstrap.js"></script>
+<script src="public/javascripts/bootstrap-confirmation.min.js"></script>
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+
+<!-- CDN For Javascript Cookie. To Only Allow the HelpfulModal To Appear Only on first initial Page Load.  -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.min.js"></script>
+<script>
+
+<script src="jquery.min.js"></script>
+<script src="jquery.firstVisitPopup.js"></script>
+
+<script>
+
+$("#HelpfulTipModal").modal('show');
+
+</script>
+
+
+<script>
+
+/* Check if no file attached when submit button is checked, and prompt user if they actually wanted to attach a file. */	
+function checkAttachment(myValidatorFunction) {
+    var isValid = myValidatorFunction();
+    alert(isValid);
+  if(isValid && document.getElementById('attachments').value == ''){
+    $('#NoAttachmentModal').modal('show')
+  }
+}
+
+</script>
+
+<script>
+	
+function GoHome() {
+var answer = confirm ("Please click on OK to continue To Home Page.")
+if (answer)
+window.location="/pages/welcome";
+}
+	
+</script>
+
+
+<!-- Not Needed, No Popovers
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>
+-->
+
+<!-- CLIENT-SIDE VALIDATION JAVASCRIPT -->
+<!-- Custom Javascript Validation Using the constraint validation API-->
+
+<!--Mark only those who have been touched as invalid.  -->
+<script>
+
+$(':required').one('blur keydown', function() {
+    $(this).addClass('touched');
+});
+  
+</script>
+
+<!-- Email Vaildation -->
+<script>
+  
+var email = document.getElementById("email");
+// As per the HTML5 Specification
+var emailRegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.(?:\.[a-zA-Z0-9-]+)*$/;
+var test = email.value.length === 0 || emailRegExp.test(email.value);
+
+email.addEventListener("keyup", function (event) {
+  if (email.validity.typeMismatch || email.validity.valueMissing) {
+    email.setCustomValidity("Please provide a valid email address. We will use this to contact you.\nFormat: Example@domain.com");
+  } else if(email.validity.tooLong){
+    email.setCustomValidity("Your provided email is too long. Please provide an email under 30 characters in legnth.\nFormat: Example@domain.com");
+  }else if(!test){
+    email.setCustomValidity("Please provide an email in the appropriate format.\nFormat: Example@domain.com");
+  }else {
+    email.setCustomValidity("");
+  }
+});
+
+</script> <!-- /.Email Validation -->
+
+<!-- END CLIENT-SIDE VALIDATION JAVASCRIPT -->
+
+<!-- Full Name -->
+
+<script>
+
+full_name.addEventListener("keyup", function (event){
+  
+  if(full_name.validity.typeMismatch || full_name.validity.valueMissing){
+    full_name.setCustomValidity("Please provide Your Full Name.\nFormat: FirstName LastName.");
+  }else if(full_name.validity.tooShort){
+    full_name.setCustomValidity("Your provided full name is too short. Please make sure the length is at least 5 characters.");
+  }else{
+    full_name.setCustomValidity("");
+  }
+  
+});
+  
+</script>
+
+<style>
+
+
+/* Default HTML5 Validation */
+
+
+:required {
+  background-color: #fff;
+}
+
+.touched:required:valid {
+  background-color:white;
+  border: 2px inset green;
+	box-shadow: 8px 8px 8px #808080;
+}
+
+.touched:required:invalid {
+  border: 2px inset red;
+	box-shadow: 8px 8px 8px #808080;
+}
+
+/*
+input:invalid {
+  border: 1px inset red;
+	box-shadow: 5px 5px 5px #808080;
+}
+
+input:valid {
+  border: 1px inset green;
+	box-shadow: 5px 5px 5px #808080;
+}
+
+textarea:invalid {
+  border: 1px inset red;
+	box-shadow: 5px 5px 5px #808080;
+}
+
+textarea:valid {
+  border: 1px inset green;
+	box-shadow: 5px 5px 5px #808080;
+}
+
+input:focus:invalid {
+  outline: none;
+}
+*/
+.beehivelybtn:active{
+    color: #000;
+    background-color: #ffbf00;
+    border-color: #0000;
+	box-shadow: 10px 10px 5px #808080;
+}
+
+.beehivelybtn:hover {
+    color: #000;
+    background-color: #ffbf00;
+    border-color: #0000;
+	box-shadow: 10px 10px 5px #808080;
+}
+
+.beehivelybtn:active:hover {
+    color: #000;
+    background-color: #ffbf00;
+    border-color: #0000;
+	box-shadow: 10px 10px 5px #808080;
+}
+
+
+.ShadowFont{
+	
+	text-shadow: 2px 2px #00000;
+	
+}
+
+.panel-default>.panel-heading {
+    background-color: #e6b800;
+}
+	
+.panel-default{
+	box-shadow: 10px 10px 5px #808080;
+}
+
+.panel-heading{
+	box-shadow: 10px 10px 5px #808080;
+}
+	
+</style>

@@ -1,0 +1,260 @@
+<!--
+<META HTTP-EQUIV="REFRESH" CONTENT="URL= https://spring2016-seniorproject-vmeln009.c9users.io/tickets/show/">
+-->
+
+<h1>Your Tickets </h1>
+<!--
+<p>Find me in app/views/tickets/show.html.erb</p>
+-->
+<head>
+    
+<!-- <meta http-equiv="refresh" content="0;url=https://spring2016-seniorproject-vmeln009.c9users.io/tickets/show"/> -->
+    
+</head>
+
+<div>
+	<ul class = "pager">
+	   <li class = "previous">
+	   		<a href = "/pages/welcome" class="beehivelybtn">&larr; Home </a>
+	   	</li>
+	</ul>
+</div>
+<!-- show.html.erb
+<div>
+    
+    <%= @displayTicket %>
+    <% @displayTicket['tickets'].each do |tickets| %>
+        <p>Ticket Number: <%= tickets['id'] %> </p>
+        <p> Subject: <%= tickets['subject'] %> </p>
+        <p> This is a <%= tickets['status'] %> ticket
+        of type  <%= tickets['type'] %>
+        with a <%= tickets['priority'] %> priority </p>
+        <p> Submition date: <%= tickets['created_at'] %>, 
+        Last Updated: <%= tickets['updated_at'] %> </p>
+        <p> Description: <%= tickets['description'] %> </p>
+        
+        
+        <br>
+    <%end %>
+</div>
+
+-->
+<!-- Resource -->
+<!-- http://www.webdeveloper.com/forum/showthread.php?93885-Force-Refresh-Upon-Page-Load -->
+<!-- http://stackoverflow.com/questions/30876402/datatables-only-loads-on-page-refresh -->
+<!-- http://solidfoundationwebdev.com/blog/posts/server-side-validation-with-angular-js-rails -->
+<!-- http://jsfiddle.net/wenyi/e3nk137y/36/ || https://www.datatables.net/reference/api/ -->
+<!--
+<div class="alert alert-success" id="eventsResult">
+    Here is the result of event.
+</div>
+-->
+
+<body onload="checkReloadCount()">
+
+<!-- For Other Table Class and Table Info:  class="display row-border stripe cell-border" id="ticket_lists" data-height="300" cellspacing="0" width="100%" data-toggle="table" data-pagination="true" data-search="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-toolbar="#toolbar"-->
+<!-- table table-hover row-border stripe display compact cell-border -->
+<table id="ticket_lists" class="table display" cellspacing="0" width="100%">
+<thead>
+  <tr>
+    <!--
+    <th data-field="state" data-checkbox="true"></th>
+    <th data-field ="Ticket Number"> Ticket Number </th></th>
+    <th data-field ="Subject">Subject</th>
+    <th data-field ="Status">Status</th>
+    <th data-field ="Type">Type</th>
+    <th data-field ="Priority">Priority</th>
+    <th data-field ="Submission">Submission</th>
+    <th data-field ="Updated">Updated</th>
+    <th data-field ="Description">Description</th>
+    -->
+    
+    <th> Ticket Number </th></th>
+    <th>Subject</th>
+    <th>Status</th>
+    <th>Type</th>
+    <th>Priority</th>
+    <th>Submission</th>
+    <th>Updated</th>
+    <th>Description</th>
+    
+  </tr>
+</thead>
+<tbody>
+
+  <% @displayTicket['tickets'].each do |tickets| %>
+    <tr>
+      <td> <%= tickets['id'] %> </td>
+      <td> <%= tickets['subject'] %> </td>
+      <td> <%= tickets['status'] %> </td>
+      <td> <%= tickets['type'] %> </td>
+      <td> <%= tickets['priority'] %> </td>
+      <td> <%= tickets['created_at'] %> </td>
+      <td> <%= tickets['updated_at'] %> </td>
+      <td><%= tickets['description'] %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+</body>
+<div>
+	<ul class = "pager">
+	   <li class = "previous">
+	   		<a href = "/pages/welcome" class="beehivelybtn">&larr; Home </a>
+	   	</li>
+	</ul>
+</div>
+<br>
+
+	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.0.min.js">
+	</script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js">
+	</script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+<!--
+  	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js">
+	</script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js">
+	</script>
+-->
+
+<!-- table table-hover row-border stripe display compact cell-border -->
+<script>
+$(document).ready(function() {
+  $('#ticket_lists').DataTable();
+});
+
+</script>
+
+
+
+<!--
+/* https://datatables.net/examples/server_side/defer_loading.html
+$(document).ready(function() {
+    var table = $('#ticket_lists').DataTable(select: true);
+
+    $('#ticket_lists tbody').on('click', 'tr', function () {
+        $(this).toggleClass('selected');
+    });
+
+    $('#button').click(function () {
+        var ids = $.map(table.rows('.selected').data(), function (item) {
+            return item[0]
+        });
+        console.log(ids)
+        alert(table.rows('.selected').data().length + ' row(s) selected');
+    });
+});
+
+<!--
+<script type="text/javascript">
+
+$(document).ready(function() {
+  $('#ticket_lists').DataTable();
+});
+
+$(function () {
+    var $result = $('#eventsResult');
+
+    $('#ticket_lists').on('all.bs.table', function (e, name, args) {
+        console.log('Event:', name, ', data:', args);
+    })
+    .on('click-row.bs.table', function (e, row, $element) {
+        $result.text('Event: click-row.bs.table');
+    })
+    .on('dbl-click-row.bs.table', function (e, row, $element) {
+        $result.text('Event: dbl-click-row.bs.table');
+    })
+    .on('sort.bs.table', function (e, name, order) {
+        $result.text('Event: sort.bs.table');
+    })
+    .on('check.bs.table', function (e, row) {
+        $result.text('Event: check.bs.table');
+    })
+    .on('uncheck.bs.table', function (e, row) {
+        $result.text('Event: uncheck.bs.table');
+    })
+    .on('check-all.bs.table', function (e) {
+        $result.text('Event: check-all.bs.table');
+    })
+    .on('uncheck-all.bs.table', function (e) {
+        $result.text('Event: uncheck-all.bs.table');
+    })
+    .on('load-success.bs.table', function (e, data) {
+        $result.text('Event: load-success.bs.table');
+    })
+    .on('load-error.bs.table', function (e, status) {
+        $result.text('Event: load-error.bs.table');
+    })
+    .on('column-switch.bs.table', function (e, field, checked) {
+        $result.text('Event: column-switch.bs.table');
+    })
+    .on('page-change.bs.table', function (e, size, number) {
+        $result.text('Event: page-change.bs.table');
+    })
+    .on('search.bs.table', function (e, text) {
+        $result.text('Event: search.bs.table');
+    });
+});
+
+</script>
+
+-->
+<!-- Best Resources For Data Tables
+https://datatables.net/examples/index -->
+
+<!-- Possible Fields -->
+<!-- 
+
+“url"
+"id"
+"external_id"
+"Via"
+"created_at"
+"updated_at"
+"type"
+"subject"
+"raw_subject"
+"description"
+"priority"
+"status"
+"recipient" 
+"requester_id"
+"submitter_id"
+"assignee_id"
+"organization_id"
+"group_id"
+"collaborator_ids"
+"forum_topic_id"
+"problem_id"
+"Has_incidents"
+"due_at"
+"tags"
+"custom_fields"
+"satisfaction_rating"
+"sharing_agreement_ids"
+"fields" 
+"brand_id"
+
+-->
+
+<!-- Resource To Use: http://www.nikolatodorovic.com/nikolas-blog/rails-4-datatables-110-ajax -->
+<!-- Could Also Look Into: https://github.com/rweng/jquery-datatables-rails -->
+
+<Style>
+    
+.panel-default>.panel-heading {
+    background-color: #e6b800;
+}
+	
+.panel-default{
+	box-shadow: 10px 10px 5px #808080;
+}
+
+.panel-heading{
+	box-shadow: 10px 10px 5px #808080;
+}
+    
+</Style>

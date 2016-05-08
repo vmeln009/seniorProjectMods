@@ -1,0 +1,43 @@
+<!--<h1>Tickets#create</h1>
+<p>Find me in app/views/tickets/create.html.erb</p>
+-->
+<!---
+This is the page that is displayed after the ticket has been created
+    It pull the variables and information from the tickets_controller.rb under the function 'create'
+-->
+
+<div>
+	<ul class = "pager">
+	   <li class = "previous">
+	   		<a href = "/pages/welcome" class="beehivelybtn">&larr; Home </a>
+	   	</li>
+	</ul>
+</div>
+
+<h2>Ticket Has been Created sucessfully: </h2>
+<div class="well well-lg">
+    <div class="well well-sm">
+        Name: <%= @fullname %>
+    </div><br>
+    <div class="well well-sm">
+        Email: <%= @email %> 
+    </div><br>
+    <div class="well well-sm">
+        Ticket Subject: <%= @subject %>
+    </div><br>
+    <div class="well well-sm">
+        Ticket Body: <%= @body %>
+    </div><br>
+</div>
+
+<div>
+	<ul class = "pager">
+	   <li class = "previous">
+	   		<a href = "/pages/welcome" class="beehivelybtn">&larr; Home </a>
+	   	</li>
+	</ul>
+</div>
+<% if false %>
+<h4>Ticket Info</h4>
+<%= @ticket %>
+<% end %>

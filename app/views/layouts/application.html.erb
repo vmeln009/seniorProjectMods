@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  
+  <!--[if !IE 7]>
+	<style type="text/css">
+		#wrap {display:table;height:100%}
+	</style>
+<![endif]-->
+  
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+  <body>
+    <div id="container">
+      <div class="page-header">
+        <%= render "layouts/header" %>
+      </div>
+      <% if false %>
+      <div><%= render "layouts/navigation" %></div>
+      <% end %>
+      <div class="container" id="main">
+        <%= yield %>
+      </div>
+      
+      <div class = "page-footer">
+        <%= render "layouts/footer" %>
+      </div>
+    </div>
+  </body>
+</html>

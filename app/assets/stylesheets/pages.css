@@ -1,0 +1,74 @@
+
+
+
+/* Custom Styles for the Support.html page. */
+
+.beehivelybtn:active{
+    color: #fff;
+    background-color: #ffbf00;
+    border-color:  #0000;
+	box-shadow: 10px 10px 5px #808080;
+}
+
+.beehivelybtn:hover {
+    color: #fff;
+    background-color: #ffbf00;
+    border-color:  #0000;
+	box-shadow: 10px 10px 5px #808080;
+}
+
+.beehivelybtn:active:hover {
+    color: #fff;
+    background-color: #ffbf00;
+    border-color:  #0000;
+	box-shadow: 10px 10px 5px #808080;
+}
+
+
+.customHR {
+    width: 95%;
+    font-size: 1px;
+    color: rgba(0, 0, 0, 0);
+    line-height: 1px;
+
+    background-color: #ffbf00;
+    margin-top: -6px;
+    margin-bottom: 100px;
+}
+
+.customSpacingSmall{
+
+	margin-bottom: 2em;
+
+}
+
+.customSpacingMedium{
+
+	margin-bottom: 5em;
+
+}
+
+h1 {
+    text-align: center;
+}
+
+
+/* This section is for sticky footer css code.*/
+
+
+html {
+  position: relative;
+  min-height: 77.25%;
+}
+.body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
