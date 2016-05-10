@@ -30,11 +30,11 @@ class TicketsController < ApplicationController
   def create_ticket
   # create zendesk client
   @schoolTag = "SDA"
-  zendesk = RestClient::Resource.new "https://5ive2.zendesk.com/api/v2/", {
-  :user => "vm5ive@yahoo.com", :password => "blank1234"
+  zendesk = RestClient::Resource.new "https://5ive2final.zendesk.com/api/v2/", {
+  :user => "vm5ive2@yahoo.com", :password => "blank123"
   }
   # create payload to send to zendesk
-  payload = {"ticket"=>{"subject"=>@schoolTag+": "+params[:subject], "comment"=>{"body"=>params[:body]}, "tags"=>[@schoolTag]}}.to_json
+  payload = {"ticket"=>{"subject"=>@schoolTag+": "+params[:subject], "comment"=>{"body"=>params[:body]}, "tags"=>@schoolTag}}.to_json
   # create ticket
   zendesk["tickets.json"].post(payload, {:content_type => :json}) 
   # also, parse and create ruby hash object
@@ -46,8 +46,8 @@ class TicketsController < ApplicationController
   
   def display_ticket
   # create zendesk client
-  zendesk = RestClient::Resource.new "https://5ive2.zendesk.com/api/v2", {
-  :user => "vm5ive@yahoo.com", :password => "blank1234"
+  zendesk = RestClient::Resource.new "https://5ive2final.zendesk.com/api/v2", {
+  :user => "vm5ive2@yahoo.com", :password => "blank123"
   }
   
   JSON.parse(zendesk["tickets.json"].get())
