@@ -21,6 +21,79 @@
 
 
 
+<!-- application.js old code
+
+
+/*
+
+$(document).ready(function () {
+$("#newTicket").validate({
+debug: true,
+rules: {
+"email": {required: true, email: true},
+
+}
+});
+});
+
+---------------------------------
+
+$(document).ready(function () {
+ 
+alert("document ready");
+ 
+});
+
+
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+
+
+
+    $(function () {
+      $('[data-toggle="popover"]').popover();
+    });
+
+
+    $("#btnFAQ").click(function() {
+
+		$("#SubmitTicket").hide();
+		$("#ViewTickets").hide();
+		$( "#FAQ" ).removeClass("hidden");
+        $( "#FAQ" ).toggle();
+		
+    });
+
+
+
+    $("#btnSubmitTicket").click(function() {
+		$("#FAQ").hide();
+		$("#ViewTickets").hide();
+		$( "#SubmitTicket" ).removeClass("hidden");
+        $( "#SubmitTicket" ).toggle();
+		$('#SubmitTicket').popover(options)
+		
+    });
+
+
+    $("#btnViewTickets").click(function() {
+		
+		$("#FAQ").hide();
+		$("#SubmitTicket").hide();
+		$( "#ViewTickets" ).removeClass("hidden");
+        $( "#ViewTickets" ).toggle();
+		
+    });
+
+});
+
+*/
+
+
+-->
+
+
+
 <!-- show.html.erb
 <div>
     
@@ -161,3 +234,116 @@ $("#new_ticket").validate();
 */
 </script>
 
+
+<!-- CSS Code From new.html.erb
+input:invalid {
+  border: 1px inset red;
+	box-shadow: 5px 5px 5px #808080;
+}
+
+input:valid {
+  border: 1px inset green;
+	box-shadow: 5px 5px 5px #808080;
+}
+
+textarea:invalid {
+  border: 1px inset red;
+	box-shadow: 5px 5px 5px #808080;
+}
+
+textarea:valid {
+  border: 1px inset green;
+	box-shadow: 5px 5px 5px #808080;
+}
+
+input:focus:invalid {
+  outline: none;
+}
+-->
+
+<!-- show.html.erb Database Javascript Selectable Functionality  -->
+
+<!--
+  	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js">
+	</script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js">
+	</script>
+-->
+
+<!--
+/* https://datatables.net/examples/server_side/defer_loading.html
+$(document).ready(function() {
+    var table = $('#ticket_lists').DataTable(select: true);
+
+    $('#ticket_lists tbody').on('click', 'tr', function () {
+        $(this).toggleClass('selected');
+    });
+
+    $('#button').click(function () {
+        var ids = $.map(table.rows('.selected').data(), function (item) {
+            return item[0]
+        });
+        console.log(ids)
+        alert(table.rows('.selected').data().length + ' row(s) selected');
+    });
+});
+
+
+<!-- Best Resources For Data Tables
+https://datatables.net/examples/index -->
+
+<!--
+<script type="text/javascript">
+
+$(document).ready(function() {
+  $('#ticket_lists').DataTable();
+});
+
+$(function () {
+    var $result = $('#eventsResult');
+
+    $('#ticket_lists').on('all.bs.table', function (e, name, args) {
+        console.log('Event:', name, ', data:', args);
+    })
+    .on('click-row.bs.table', function (e, row, $element) {
+        $result.text('Event: click-row.bs.table');
+    })
+    .on('dbl-click-row.bs.table', function (e, row, $element) {
+        $result.text('Event: dbl-click-row.bs.table');
+    })
+    .on('sort.bs.table', function (e, name, order) {
+        $result.text('Event: sort.bs.table');
+    })
+    .on('check.bs.table', function (e, row) {
+        $result.text('Event: check.bs.table');
+    })
+    .on('uncheck.bs.table', function (e, row) {
+        $result.text('Event: uncheck.bs.table');
+    })
+    .on('check-all.bs.table', function (e) {
+        $result.text('Event: check-all.bs.table');
+    })
+    .on('uncheck-all.bs.table', function (e) {
+        $result.text('Event: uncheck-all.bs.table');
+    })
+    .on('load-success.bs.table', function (e, data) {
+        $result.text('Event: load-success.bs.table');
+    })
+    .on('load-error.bs.table', function (e, status) {
+        $result.text('Event: load-error.bs.table');
+    })
+    .on('column-switch.bs.table', function (e, field, checked) {
+        $result.text('Event: column-switch.bs.table');
+    })
+    .on('page-change.bs.table', function (e, size, number) {
+        $result.text('Event: page-change.bs.table');
+    })
+    .on('search.bs.table', function (e, text) {
+        $result.text('Event: search.bs.table');
+    });
+});
+
+</script>
+-->
